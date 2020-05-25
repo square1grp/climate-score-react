@@ -3,7 +3,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import Header from '../components/Header'
 import {
-  IndexPage
+  HomePage
 } from '../pages'
 
 // App Router
@@ -15,7 +15,7 @@ class RoutedApplication extends React.Component {
         <Header />
 
         <Switch>
-          {/* <Route path='/' exact component={BrowsePage} /> */}
+          <Route path='/' exact component={HomePage} />
         </Switch>
 
       </ConnectedRouter>

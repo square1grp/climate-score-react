@@ -1,0 +1,13 @@
+.hero-container {
+  position: relative;
+  height: 850px;
+
+  .carousel {
+    position: absolute;
+    .carousel-item img {
+      height: 850px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
