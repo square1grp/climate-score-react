@@ -3,11 +3,53 @@
   height: 850px;
 
   .carousel {
-    position: absolute;
     .carousel-item img {
       height: 850px;
       width: 100%;
       object-fit: cover;
+    }
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top: 200px;
+
+    h1 {
+      color: #ffffff;
+      font-size: 60px;
+    }
+
+    p {
+      color: #ffffff;
+      b {
+        color: #ffef61;
+      }
+    }
+
+    .input-address-container {
+      position: relative;
+
+      .input-group-prepend {
+        position: absolute;
+        height: 48px;
+        z-index: 5;
+        span {
+          background-color: transparent;
+          border: none;
+        }
+      }
+
+      input {
+        line-height: 48px;
+        height: 48px;
+        padding: 13px 20px 13px 50px;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        color: #4f4f4f;
+      }
     }
   }
 }
