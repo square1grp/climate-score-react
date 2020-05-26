@@ -8,7 +8,9 @@ class Header extends React.Component {
     return (
       <Container fluid className='header-container'>
         <Row>
-          <Col className='px-lg-5 py-lg-4'><Image src={logoImgSrc} height='80'/></Col>
+          <Col className="p-5 px-lg-5 py-lg-4 text-center text-lg-left">
+            <Image src={logoImgSrc} height='80' />
+          </Col>
         </Row>
       </Container>
     )

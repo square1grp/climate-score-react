@@ -1,54 +1,171 @@
-.hero-container {
-  position: relative;
-  height: 850px;
+section {
+  padding-top: 40px;
+  padding-bottom: 90px;
 
-  .carousel {
-    .carousel-item img {
-      height: 850px;
-      width: 100%;
-      object-fit: cover;
-    }
+  h1 {
+    margin-bottom: 100px;
+    font-size: 60px;
   }
 
-  .hero-content {
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    padding-top: 200px;
+  h2 {
+    font-size: 50px;
+  }
 
-    h1 {
-      color: #ffffff;
-      font-size: 60px;
-    }
+  &.hero {
+    position: relative;
+    height: 850px;
+    padding-top: 0px;
 
-    p {
-      color: #ffffff;
-      b {
-        color: #ffef61;
+    .carousel {
+      .carousel-item img {
+        height: 850px;
+        width: 100%;
+        object-fit: cover;
       }
     }
 
-    .input-address-container {
-      position: relative;
+    .hero-content {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      padding-top: 200px;
 
-      .input-group-prepend {
-        position: absolute;
-        height: 48px;
-        z-index: 5;
-        span {
-          background-color: transparent;
-          border: none;
+      h1 {
+        color: #ffffff;
+      }
+
+      p {
+        color: #ffffff;
+        b {
+          color: #ffef61;
         }
       }
 
+      .input-address-container {
+        position: relative;
+
+        .input-group-prepend {
+          position: absolute;
+          height: 48px;
+          z-index: 5;
+          span {
+            background-color: transparent;
+            border: none;
+          }
+        }
+
+        input {
+          line-height: 48px;
+          height: 48px;
+          padding: 13px 20px 13px 50px;
+          border-top-left-radius: 0.25rem;
+          border-bottom-left-radius: 0.25rem;
+          color: #4f4f4f;
+        }
+      }
+    }
+  }
+
+  &.our-mission {
+    background: #d2ffed;
+  }
+
+  &.climate-score {
+    .property {
+      margin-bottom: 100px;
+
+      h6 {
+        margin-bottom: 32px;
+      }
+    }
+
+    .scorebase-column {
+      background-color: #ffffff;
+      box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.2);
+      border-radius: 0.25rem;
+
+      .score-base {
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 380px;
+
+        h2 {
+          font-size: 40px;
+        }
+
+        .score {
+          font-size: 16px;
+          font-weight: bold;
+
+          b {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  &.about-us {
+    background-color: #fff5d3;
+  }
+
+  &.news-letter {
+    background-color: #37a87a;
+    padding-bottom: 40px;
+
+    h2,
+    h5,
+    h6,
+    p {
+      color: #ffffff;
+    }
+
+    .input-group {
       input {
-        line-height: 48px;
         height: 48px;
-        padding: 13px 20px 13px 50px;
-        border-top-left-radius: 0.25rem;
-        border-bottom-left-radius: 0.25rem;
-        color: #4f4f4f;
+        padding: 15px;
+      }
+      button {
+        background-color: #2ef4ae;
+        color: #242424;
+        border: none;
+        padding: 15px 20px;
+        line-height: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  section {
+    padding-bottom: 40px;
+
+    h1 {
+      font-size: 36px;
+      line-height: 48px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    &.hero .hero-content .input-address-container input::placeholder {
+      content: "Enter an address or ZIP code";
+    }
+
+    &.climate-score {
+      .property {
+        margin-bottom: 20px;
+      }
+
+      .scorebase-column {
+        margin-bottom: 20px;
+        .score-base h2 {
+          font-size: 32px;
+        }
       }
     }
   }
