@@ -14,11 +14,15 @@ import headshot4ImgSrc from '../../assets/images/Headshot4.png'
 import headshot5ImgSrc from '../../assets/images/Headshot5.png'
 import headshot6ImgSrc from '../../assets/images/Headshot6.png'
 
+import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
+
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      inputAddr: '',
       inputAddrPlaceholder: 'Enter an address, neighborhood, city or ZIP code'
     }
   }
@@ -45,8 +49,18 @@ class HomePage extends React.Component {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
+  handleChange = address => {
+    this.setState({ inputAddr: address });
+  };
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => console.log(results))
+      .catch(error => console.error('Error', error));
+  };
+
   render() {
-    const { inputAddrPlaceholder } = this.state
+    const { inputAddr, inputAddrPlaceholder } = this.state
 
     return (
       <>
@@ -77,10 +91,46 @@ class HomePage extends React.Component {
                               <Image src={eyeDropImgSrc} height="20" />
                             </InputGroup.Text>
                           </InputGroup.Prepend>
-                          <FormControl
-                            placeholder={inputAddrPlaceholder}
-                            aria-describedby="input-address"
-                          />
+
+                          <PlacesAutocomplete
+                            value={inputAddr}
+                            onChange={this.handleChange}
+                            onSelect={this.handleSelect}
+                          >
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                              <div className="w-100">
+                                <FormControl
+                                  {...getInputProps({
+                                    className: 'location-search-input',
+                                  })}
+                                  placeholder={inputAddrPlaceholder}
+                                  aria-describedby="input-address"
+                                />
+                                <div className="autocomplete-dropdown-container">
+                                  {loading && <div>Loading...</div>}
+                                  {suggestions.map(suggestion => {
+                                    const className = suggestion.active
+                                      ? 'suggestion-item--active'
+                                      : 'suggestion-item';
+                                    // inline style for demonstration purpose
+                                    const style = suggestion.active
+                                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                    return (
+                                      <div
+                                        {...getSuggestionItemProps(suggestion, {
+                                          className,
+                                          style,
+                                        })}
+                                      >
+                                        <span>{suggestion.description}</span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+                          </PlacesAutocomplete>
                         </InputGroup>
                       </Col>
                     </Row>
