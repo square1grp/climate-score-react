@@ -61,18 +61,20 @@ class ScorePage extends React.Component {
                 3270 21st Street San Francisco, CA
             </Col>
 
-            <Col className="score-panel py-4 mb-5" lg={{ span: 6, offset: 3 }}>
-              <h5 className="text-uppercase text-center">Your Score</h5>
-              <br />
-              <h2 className="text-center mb-5">Moderate risk</h2>
+            <Col lg={{ span: 6, offset: 3 }}>
+              <div className="score-panel py-4 mb-5">
+                <h5 className="text-uppercase text-center">Your Score</h5>
+                <br />
+                <h2 className="text-center mb-5">Moderate risk</h2>
 
-              <div className="donut-chart">
-                <Doughnut data={data} options={{ events: {}, tooltips: { enabled: false } }} />
+                <div className="donut-chart">
+                  <Doughnut data={data} options={{ events: {}, tooltips: { enabled: false } }} />
 
-                <p className="m-0 score"><span className="m-auto"><b>{score.avgScore}</b> / 100</span></p>
+                  <p className="m-0 score"><span className="m-auto"><b>{score.avgScore}</b> / 100</span></p>
+                </div>
+
+                <div className="p-3" />
               </div>
-
-              <div className="p-3" />
             </Col>
 
             <Col xs={12}>

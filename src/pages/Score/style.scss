@@ -40,3 +40,18 @@ section {
     }
   }
 }
+
+
+@media screen and (max-width: 767px) {
+  section {
+    padding-top: 180px;
+
+    .score-panel .donut-chart p.score {
+      font-size: 18px;
+
+      b {
+        font-size: 24px;
+      }
+    }
+  }
+}
