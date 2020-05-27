@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {
-  HomePage
+  HomePage,
+  ScorePage
 } from '../pages'
 
 // App Router
@@ -17,6 +18,7 @@ class RoutedApplication extends React.Component {
 
         <Switch>
           <Route path='/' exact component={HomePage} />
+          <Route path='/score' component={ScorePage} />
         </Switch>
 
         <Footer />

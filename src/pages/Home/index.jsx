@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import './style.scss'
 import { Container, Row, Col, Carousel, Image, InputGroup, FormControl, Button } from 'react-bootstrap'
 
@@ -16,13 +17,15 @@ import headshot6ImgSrc from '../../assets/images/Headshot6.png'
 
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 
+import scoreActions from '../../redux/actions/score'
+
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      inputAddr: '',
+      inputAddr: '3650 Rosecrans Street. San Diego. CA 92110',
       inputAddrPlaceholder: 'Enter an address, neighborhood, city or ZIP code'
     }
   }
@@ -59,6 +62,11 @@ class HomePage extends React.Component {
       .catch(error => console.error('Error', error));
   };
 
+  redirectToScorePage = () => {
+    this.props.fetchScoreData()
+    this.props.history.push('/score')
+  }
+
   render() {
     const { inputAddr, inputAddrPlaceholder } = this.state
 
@@ -88,7 +96,7 @@ class HomePage extends React.Component {
                         <InputGroup>
                           <InputGroup.Prepend>
                             <InputGroup.Text id="input-address">
-                              <Image src={eyeDropImgSrc} height="20" />
+                              <Image src={eyeDropImgSrc} height="20" onClick={this.redirectToScorePage} />
                             </InputGroup.Text>
                           </InputGroup.Prepend>
 
@@ -277,4 +285,18 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage
+// integrate redux-state to props
+const mapStateToProps = (state) => ({
+  ...state.score
+})
+
+// integrate redux-actions to props
+const mapDispatchToProps = {
+  ...scoreActions
+}
+
+// create visualization component integrated with redux-saga
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage)
