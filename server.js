@@ -1,16 +1,39 @@
 require('dotenv').config()
+const { Sequelize } = require('sequelize');
+const { ApolloServer, gql } = require('apollo-server');
+const models = require('./models');
+var { Score } = require('./models');
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+models.sequelize.sync().then(() => {
+  const typeDefs = gql`
+    type Score {
+      address: String,
+      avgScore: Int,
+      droughtScore: Int,
+      temperatureScore: Int,
+      fireScore: Int,
+      floodScore: Int,
+      rainScore: Int
+    }
+  
+    type Query {
+      getScore(address: String!): Score
+    }
+  `;
 
-const api_routes = require('./api_routes')
-const port = process.env.API_PORT || 5000
+  const resolvers = {
+    Query: {
+      getScore: async (parent, args) => {
+        const score = await Score.findOne({ where: { 'address': args.address } })
 
-const app = express()
+        return score
+      },
+    },
+  };
 
-app.use(cors())
-app.use(bodyParser())
-app.use('/api', api_routes)
+  const server = new ApolloServer({ typeDefs, resolvers });
 
-app.listen(port, () => console.log(`Listening on port ${process.env.API_PORT}`))
+  server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
+})
