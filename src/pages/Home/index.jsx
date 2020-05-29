@@ -19,7 +19,6 @@ import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete'
 
 import scoreActions from '../../redux/actions/score'
 
-
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
@@ -63,7 +62,8 @@ class HomePage extends React.Component {
   };
 
   redirectToScorePage = () => {
-    this.props.fetchScoreData()
+    const { inputAddr } = this.state
+    this.props.fetchScoreData(inputAddr)
     this.props.history.push('/score')
   }
 

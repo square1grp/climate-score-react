@@ -1,5 +1,3 @@
-require('dotenv').config()
-const { Sequelize } = require('sequelize');
 const { ApolloServer, gql } = require('apollo-server');
 const models = require('./models');
 var { Score } = require('./models');

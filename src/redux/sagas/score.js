@@ -2,20 +2,43 @@ import { all, takeLatest, put, call } from 'redux-saga/effects'
 import actions from '../actions/score'
 
 // visualization saga
-export function* fetchScoreData() {
+export function* fetchScoreData({ address }) {
   try {
     let res_status = null;
-    const response = yield call(() => fetch(
-      'http://localhost:5000/api/score'
-    ).then(res => {
-      res_status = res.status
 
-      if (res.status !== 200)
-        return res.text()
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-      return res.json()
-    }))
+    let graphql = JSON.stringify({
+      query: `query {
+        getScore(address: \"${address}\") {
+          avgScore
+        }
+      }`,
+      variables: {}
+    })
 
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: graphql,
+      redirect: 'follow'
+    };
+
+    const response = yield call(() => fetch("http://localhost:4000", requestOptions)
+      .then(res => {
+        res_status = res.status
+
+        if (res.status !== 200)
+          return res.text()
+
+        return res.json()
+      })
+      .then(result => {
+        return result.data.getScore
+      }))
+
+    console.log(response)
     if (res_status === 200) { // request is completed and use data.
       yield put({ type: actions.FETCH_DATA_SUCCESS, response })
     } else { // requests is failed
