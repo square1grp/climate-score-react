@@ -3,13 +3,19 @@ import { connect } from 'react-redux'
 
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { Doughnut } from 'react-chartjs-2';
-
+import { NavLink } from 'react-router-dom'
 
 import eyeDropImgSrc from '../../assets/images/eye-drop.png'
 import arrowDownImgSrc from '../../assets/images/arrow-down.png'
 import './style.scss'
 
+import scoreActions from '../../redux/actions/score'
+
 class ScorePage extends React.Component {
+  componentDidMount() {
+    this.props.fetchScoreData('3650 Rosecrans Street. San Diego. CA 92110')
+  }
+
   getBackgroundColor = (avgScore) => {
     if (!avgScore)
       return ['#FFFFF', '#FFFFFF']
@@ -59,8 +65,8 @@ class ScorePage extends React.Component {
 
               <Col className="address justify-content-center d-flex align-items-center mb-5" xs={12}>
                 <Image className="mr-3" src={eyeDropImgSrc} height="20" />
-                3270 21st Street San Francisco, CA
-            </Col>
+                {score.address}
+              </Col>
 
               <Col lg={{ span: 6, offset: 3 }}>
                 <div className="score-panel py-4 mb-5">
@@ -79,9 +85,9 @@ class ScorePage extends React.Component {
               </Col>
 
               <Col xs={12}>
-                <p className="text-center text-uppercase">
-                  Find out why
-                <br />
+                <p className="text-center text-uppercase find-out-why">
+                  <NavLink to="/report">Find out why</NavLink>
+                  <br />
                   <Image src={arrowDownImgSrc} />
                 </p>
               </Col>
@@ -99,7 +105,9 @@ const mapStateToProps = (state) => ({
 })
 
 // integrate redux-actions to props
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  ...scoreActions
+}
 
 // create visualization component integrated with redux-saga
 export default connect(

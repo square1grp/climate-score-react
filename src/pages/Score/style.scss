@@ -1,7 +1,7 @@
 .score-page {
   section {
     background-color: #37a87a;
-    min-height: calc(100vh - 120px);
+    min-height: 100vh;
     color: #fff;
     padding: 0;
 
@@ -39,6 +39,10 @@
           }
         }
       }
+    }
+
+    .find-out-why a {
+      color: #fff;
     }
   }
 

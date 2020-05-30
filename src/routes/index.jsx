@@ -5,7 +5,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {
   HomePage,
-  ScorePage
+  ScorePage,
+  ReportPage
 } from '../pages'
 
 // App Router
@@ -19,6 +20,7 @@ class RoutedApplication extends React.Component {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path='/score' component={ScorePage} />
+          <Route path='/report' component={ReportPage} />
         </Switch>
 
         <Footer />

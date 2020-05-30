@@ -1,0 +1,32 @@
+.report-page {
+  section {
+    background-color: #37a87a;
+    min-height: 100vh;
+    color: #fff;
+    padding: 0;
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .address {
+      font-size: 16px;
+    }
+  }
+
+  .score-panels {
+    background-color: #fff;
+    color: #242424;
+  }
+
+  .full-report a {
+    color: #fff;
+  }
+
+  @media screen and (max-width: 767px) {
+    section {
+      padding-top: 180px;
+    }
+  }
+}

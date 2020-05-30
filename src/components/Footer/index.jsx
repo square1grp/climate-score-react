@@ -5,6 +5,9 @@ import './style.scss'
 
 class Footer extends React.Component {
   render() {
+    if (['/score', '/report'].includes(window.location.pathname))
+      return (<React.Fragment />)
+
     return (
       <Container fluid className='footer-container'>
         <Row>

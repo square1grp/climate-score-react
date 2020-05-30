@@ -12,7 +12,13 @@ export function* fetchScoreData({ address }) {
     let graphql = JSON.stringify({
       query: `query {
         getScore(address: "${address}") {
-          avgScore
+          address,
+          avgScore,
+          droughtScore,
+          temperatureScore,
+          fireScore,
+          floodScore,
+          rainScore
         }
       }`,
       variables: {}
