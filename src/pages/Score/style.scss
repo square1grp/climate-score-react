@@ -1,56 +1,57 @@
-section {
-  background-color: #37a87a;
-  min-height: calc(100vh - 120px);
-  color: #fff;
-  padding: 0;
+.score-page {
+  section {
+    background-color: #37a87a;
+    min-height: calc(100vh - 120px);
+    color: #fff;
+    padding: 0;
 
-  h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
 
-  .address {
-    font-size: 16px;
-  }
+    .address {
+      font-size: 16px;
+    }
 
-  .score-panel {
-    background-color: #fff;
-    color: #242424;
-    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    .score-panel {
+      background-color: #fff;
+      color: #242424;
+      box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
 
-    .donut-chart {
-      position: relative;
+      .donut-chart {
+        position: relative;
 
-      p.score {
-        position: absolute;
-        font-size: 24px;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        text-align: center;
+        p.score {
+          position: absolute;
+          font-size: 24px;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          text-align: center;
 
-        b {
-          font-size: 32px;
+          b {
+            font-size: 32px;
+          }
         }
       }
     }
   }
-}
 
+  @media screen and (max-width: 767px) {
+    section {
+      padding-top: 180px;
 
-@media screen and (max-width: 767px) {
-  section {
-    padding-top: 180px;
+      .score-panel .donut-chart p.score {
+        font-size: 18px;
 
-    .score-panel .donut-chart p.score {
-      font-size: 18px;
-
-      b {
-        font-size: 24px;
+        b {
+          font-size: 24px;
+        }
       }
     }
   }

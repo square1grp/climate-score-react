@@ -49,44 +49,46 @@ class ScorePage extends React.Component {
     };
 
     return (
-      <section>
-        <Container>
-          <Row>
-            <Col className="pt-lg-5" xs={12}>
-              <h1 className="text-center">How will climate change affect your home?</h1>
-            </Col>
+      <div className="score-page">
+        <section>
+          <Container>
+            <Row>
+              <Col className="pt-lg-5" xs={12}>
+                <h1 className="text-center">How will climate change affect your home?</h1>
+              </Col>
 
-            <Col className="address justify-content-center d-flex align-items-center mb-5" xs={12}>
-              <Image className="mr-3" src={eyeDropImgSrc} height="20" />
+              <Col className="address justify-content-center d-flex align-items-center mb-5" xs={12}>
+                <Image className="mr-3" src={eyeDropImgSrc} height="20" />
                 3270 21st Street San Francisco, CA
             </Col>
 
-            <Col lg={{ span: 6, offset: 3 }}>
-              <div className="score-panel py-4 mb-5">
-                <h5 className="text-uppercase text-center">Your Score</h5>
-                <br />
-                <h2 className="text-center mb-5">Moderate risk</h2>
+              <Col lg={{ span: 6, offset: 3 }}>
+                <div className="score-panel py-4 mb-5">
+                  <h5 className="text-uppercase text-center">Your Score</h5>
+                  <br />
+                  <h2 className="text-center mb-5">Moderate risk</h2>
 
-                <div className="donut-chart">
-                  <Doughnut data={data} options={{ events: {}, tooltips: { enabled: false } }} />
+                  <div className="donut-chart">
+                    <Doughnut data={data} options={{ events: {}, tooltips: { enabled: false } }} />
 
-                  <p className="m-0 score"><span className="m-auto"><b>{score.avgScore}</b> / 100</span></p>
+                    <p className="m-0 score"><span className="m-auto"><b>{score.avgScore}</b> / 100</span></p>
+                  </div>
+
+                  <div className="p-3" />
                 </div>
+              </Col>
 
-                <div className="p-3" />
-              </div>
-            </Col>
-
-            <Col xs={12}>
-              <p className="text-center text-uppercase">
-                Find out why
+              <Col xs={12}>
+                <p className="text-center text-uppercase">
+                  Find out why
                 <br />
-                <Image src={arrowDownImgSrc} />
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+                  <Image src={arrowDownImgSrc} />
+                </p>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </div>
     )
   }
 }

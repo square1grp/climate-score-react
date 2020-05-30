@@ -71,7 +71,7 @@ class HomePage extends React.Component {
     const { inputAddr, inputAddrPlaceholder } = this.state
 
     return (
-      <>
+      <div className="home-page">
         <section className="hero">
           <Container fluid>
             <Row>
@@ -241,9 +241,9 @@ class HomePage extends React.Component {
                   return (
                     <Col key={index} className="text-center p-lg-5 mb-3" xs={6} lg={4}>
                       <Image className="mb-3" src={headshotImgSrc} />
-                      <h5 className="mb-3" className="text-center">Sam Eckhouse</h5>
+                      <h5 className="mb-3 text-center">Sam Eckhouse</h5>
                       <h6 className="text-center">Lorem Ipsum</h6>
-                      <h6 className="text-center"><a href="#">LinkedIn</a></h6>
+                      <h6 className="text-center"><a href="/">LinkedIn</a></h6>
                     </Col>
                   )
                 })
@@ -280,7 +280,7 @@ class HomePage extends React.Component {
             </Row>
           </Container>
         </section>
-      </>
+      </div>
     )
   }
 }
