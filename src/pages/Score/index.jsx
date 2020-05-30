@@ -43,8 +43,6 @@ class ScorePage extends React.Component {
 
   render() {
     let { score } = this.props
-    if (!score || !score.avgScore) score.avgScore = 0
-    // const avgScore = 42
 
     const data = {
       datasets: [{
