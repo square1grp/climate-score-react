@@ -2,6 +2,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Preview Screenshots
+<img src="https://raw.githubusercontent.com/square1grp/climate-score/master/screenshots/preview.png" width="400">
 
 ## Available Scripts
 
