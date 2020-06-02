@@ -6,7 +6,8 @@ import Footer from '../components/Footer'
 import {
   HomePage,
   ScorePage,
-  ReportPage
+  ReportPage,
+  UnlockPage
 } from '../pages'
 
 // App Router
@@ -21,6 +22,7 @@ class RoutedApplication extends React.Component {
           <Route path='/' exact component={HomePage} />
           <Route path='/score' component={ScorePage} />
           <Route path='/report' component={ReportPage} />
+          <Route path='/unlock' component={UnlockPage} />
         </Switch>
 
         <Footer />

@@ -1,0 +1,75 @@
+.unlock-page {
+  section {
+    min-height: calc(100vh - 120px);
+    color: #000;
+    padding: 0;
+
+    .c-breadcrumb {
+      background-color: #37a87a;
+      min-height: 128px;
+      color: #fffefe;
+      font-size: 18px;
+
+      span {
+        color: #fff;
+      }
+    }
+
+    h4 {
+      font-weight: normal;
+    }
+
+    .address {
+      height: 55px;
+
+      span {
+        background-color: #fff;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 18px;
+          left: 20px;
+        }
+      }
+    }
+
+    .confirm-to-checkout {
+      height: 55px;
+      .to-checkout {
+        background-color: #ffd84e;
+        color: #000;
+        min-width: 300px;
+      }
+    }
+
+    .in-your-report {
+      p {
+        position: relative;
+
+        img {
+          position: absolute;
+          left: -5px;
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    section {
+      .c-breadcrumb {
+        padding-top: 150px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h4 {
+        font-size: 20px;
+      }
+    }
+  }
+}

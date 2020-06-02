@@ -199,7 +199,7 @@ class ReportPage extends React.Component {
 
               <Col xs={12}>
                 <p className="text-center text-uppercase full-report my-5">
-                  <NavLink to="/">Get Your Full Report</NavLink>
+                  <NavLink to="/unlock">Get Your Full Report</NavLink>
                   <br />
                   <Image src={arrowDownImgSrc} />
                 </p>
