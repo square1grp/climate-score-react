@@ -34,7 +34,7 @@ class UnlockPage extends React.Component {
 
                   <Col xs={12} className="text-center">
                     <div className="d-flex text-center confirm-to-checkout">
-                      <NavLink to="/checkout" className="text-center to-checkout rounded p-3 m-auto">Confirm to Continue</NavLink>
+                      <NavLink to="/checkout" className="text-center to-checkout rounded p-3 m-auto"><b>Confirm to Continue</b></NavLink>
                     </div>
                   </Col>
                 </Row>
