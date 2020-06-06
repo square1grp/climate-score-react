@@ -2,32 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './style.scss'
 
-import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Image, } from 'react-bootstrap'
 import eyeDropImgSrc from '../../assets/images/eye-drop.png'
 import checkImgSrc from '../../assets/images/check.png'
+import CheckoutForm from "./CheckoutForm";
+
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const promise = loadStripe("pk_test_51GqMLtJRjq8u23eq6jc6vFvTWouABOklPhGq5dFOm0nw2VoWKyrm3JUFqM8IzuQUqHFatdCEbKR0QJiSlYFlMvGc00NyxnAfyr");
 
 class CheckoutPage extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { validated: false }
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    const form = event.currentTarget;
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    this.setState({ validated: true })
-  }
-
   render() {
-    const { validated } = this.state
-
     return (
       <div className="checkout-page">
         <section>
@@ -54,80 +40,9 @@ class CheckoutPage extends React.Component {
 
                     <Col xs={12} lg={{ span: 6, offset: 3 }}>
                       <Row>
-                        <Form className="w-100" noValidate validated={validated} onSubmit={this.handleSubmit}>
-                          <h6 className="text-center text-uppercase">Personal Details </h6><br />
-
-                          <Form.Row>
-                            <Form.Group as={Col} xs={12} lg={6}>
-                              <Form.Control placeholder="First Name" required />
-                            </Form.Group>
-
-                            <Form.Group as={Col} xs={12} lg={6}>
-                              <Form.Control placeholder="Last Name" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <Form.Row>
-                            <Form.Group as={Col}>
-                              <Form.Control placeholder="Email Address" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <Form.Row>
-                            <Form.Group as={Col}>
-                              <p>We will send your Premium Report PDF and <br />receipt to this email address within 24 hours.</p>
-                            </Form.Group>
-                          </Form.Row>
-
-                          <Form.Row>
-                            <Form.Group as={Col} xs={12} lg={6}>
-                              <Form.Control placeholder="Phone Number" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <br /><h6 className="text-center text-uppercase">Billing Address</h6><br />
-                          <Form.Row>
-                            <Form.Group as={Col}>
-                              <Form.Control placeholder="Street Address" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <Form.Row>
-                            <Form.Group as={Col}>
-                              <Form.Control placeholder="City" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <Form.Row>
-                            <Form.Group as={Col} xs={12} lg={6}>
-                              <Form.Control placeholder="State" required />
-                            </Form.Group>
-
-                            <Form.Group as={Col} xs={12} lg={6}>
-                              <Form.Control placeholder="Zip" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <br /><h6 className="text-center text-uppercase">Credit Card</h6><br />
-
-                          <Form.Row>
-                            <Form.Group as={Col} xs={12} lg={9}>
-                              <Form.Control placeholder="Credit Card" required />
-                            </Form.Group>
-
-                            <Form.Group as={Col} xs={12} lg={3}>
-                              <Form.Control placeholder="CVV" required />
-                            </Form.Group>
-                          </Form.Row>
-
-                          <br /><br />
-
-                          <Form.Row>
-                            <Form.Group as={Col} className="text-center">
-                              <Button className="to-checkout p-3" type="submit"><b>Fianlize & Pay</b></Button>
-                            </Form.Group>
-                          </Form.Row>
-                        </Form>
+                        <Elements stripe={promise}>
+                          <CheckoutForm />
+                        </Elements>
                       </Row>
                     </Col>
                   </Col>

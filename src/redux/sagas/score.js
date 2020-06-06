@@ -31,7 +31,7 @@ export function* fetchScoreData({ address }) {
       redirect: 'follow'
     };
 
-    const response = yield call(() => fetch("http://localhost:4000", requestOptions)
+    const response = yield call(() => fetch("http://localhost:4000/graphql", requestOptions)
       .then(res => {
         res_status = res.status
 
