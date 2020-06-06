@@ -8,7 +8,8 @@ import {
   ScorePage,
   ReportPage,
   UnlockPage,
-  CheckoutPage
+  CheckoutPage,
+  OrderCompletePage
 } from '../pages'
 
 // App Router
@@ -25,6 +26,7 @@ class RoutedApplication extends React.Component {
           <Route path='/report' component={ReportPage} />
           <Route path='/unlock' component={UnlockPage} />
           <Route path='/checkout' component={CheckoutPage} />
+          <Route path='/order-complete' component={OrderCompletePage} />
         </Switch>
 
         <Footer />

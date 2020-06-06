@@ -5,8 +5,9 @@ import {
   useElements
 } from "@stripe/react-stripe-js";
 import { Col, Form } from 'react-bootstrap'
+import { withRouter } from 'react-router'
 
-export default function CheckoutForm() {
+function CheckoutForm(props) {
   const [validated, setValidated] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -67,7 +68,6 @@ export default function CheckoutForm() {
     setValidated(true);
 
     if (form.checkValidity()) {
-      debugger
       setProcessing(true);
 
       const payload = await stripe.confirmCardPayment(clientSecret, {
@@ -83,6 +83,8 @@ export default function CheckoutForm() {
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+
+        props.history.push('/order-complete')
       }
     }
   };
@@ -93,17 +95,17 @@ export default function CheckoutForm() {
 
       <Form.Row>
         <Form.Group as={Col} xs={12} lg={6}>
-          <Form.Control placeholder="First Name" required />
+          <Form.Control placeholder="First Name" required value="Test" />
         </Form.Group>
 
         <Form.Group as={Col} xs={12} lg={6}>
-          <Form.Control placeholder="Last Name" required />
+          <Form.Control placeholder="Last Name" required value="User" />
         </Form.Group>
       </Form.Row>
 
       <Form.Row>
         <Form.Group as={Col}>
-          <Form.Control placeholder="Email Address" required />
+          <Form.Control placeholder="Email Address" required value="test@gmail.com" />
         </Form.Group>
       </Form.Row>
 
@@ -115,30 +117,30 @@ export default function CheckoutForm() {
 
       <Form.Row>
         <Form.Group as={Col} xs={12} lg={6}>
-          <Form.Control placeholder="Phone Number" required />
+          <Form.Control placeholder="Phone Number" required value="0123456789" />
         </Form.Group>
       </Form.Row>
 
       <br /><h6 className="text-center text-uppercase">Billing Address</h6><br />
       <Form.Row>
         <Form.Group as={Col}>
-          <Form.Control placeholder="Street Address" required />
+          <Form.Control placeholder="Street Address" required value="123 Main St" />
         </Form.Group>
       </Form.Row>
 
       <Form.Row>
         <Form.Group as={Col}>
-          <Form.Control placeholder="City" required />
+          <Form.Control placeholder="City" required value="Los Angeles" />
         </Form.Group>
       </Form.Row>
 
       <Form.Row>
         <Form.Group as={Col} xs={12} lg={6}>
-          <Form.Control placeholder="State" required />
+          <Form.Control placeholder="State" required value="CA" />
         </Form.Group>
 
         <Form.Group as={Col} xs={12} lg={6}>
-          <Form.Control placeholder="Zip" required />
+          <Form.Control placeholder="Zip" required value="90026" />
         </Form.Group>
       </Form.Row>
 
@@ -180,3 +182,5 @@ export default function CheckoutForm() {
     </Form>
   );
 }
+
+export default withRouter(CheckoutForm)
